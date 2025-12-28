@@ -1,8 +1,25 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight, Download, Github, Linkedin, Mail } from 'lucide-react';
 import { Button } from '../ui/Button';
 export function Hero() {
+  const roles = [
+    'Embedded Systems Engineer',
+    'Robotics Engineer',
+    'AI/ML Engineer',
+    'Computer Vision Engineer',
+    'Automation Engineer',
+    'Mechatronics Engineer'
+  ];
+  
+  const [currentRole, setCurrentRole] = useState(0);
+  
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentRole((prev) => (prev + 1) % roles.length);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
   return <section className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
       {/* Background Elements */}
       <div className="absolute inset-0 bg-navy-900">
@@ -125,25 +142,62 @@ export function Hero() {
               <div className="absolute inset-4 border border-purple-500/20 rounded-full animate-[spin_15s_linear_infinite_reverse]" />
               <div className="absolute inset-12 border border-cyan-500/20 rounded-full animate-[spin_20s_linear_infinite]" />
 
-              {/* Central Hub */}
+              {/* Central Hub with Animated Role */}
               <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-32 h-32 bg-navy-800 rounded-full border border-cyan-500/50 flex items-center justify-center shadow-[0_0_30px_rgba(0,217,255,0.2)] relative z-10">
-                  <div className="text-cyan-400 font-mono text-xl font-bold">
-                    AI/IoT
-                  </div>
+                <div className="w-48 h-48 bg-navy-800/50 rounded-full border border-cyan-500/50 flex items-center justify-center shadow-[0_0_50px_rgba(0,217,255,0.3)] relative z-10 backdrop-blur-sm">
+                  <AnimatePresence mode="wait">
+                    <motion.div 
+                      key={currentRole}
+                      className="text-center px-4"
+                      initial={{ opacity: 0, scale: 0.8, rotateY: 90 }}
+                      animate={{ opacity: 1, scale: 1, rotateY: 0 }}
+                      exit={{ opacity: 0, scale: 0.8, rotateY: -90 }}
+                      transition={{ duration: 0.6, ease: "easeInOut" }}
+                    >
+                      <div className="text-cyan-400 font-mono text-lg font-bold leading-tight">
+                        {roles[currentRole]}
+                      </div>
+                    </motion.div>
+                  </AnimatePresence>
                 </div>
               </div>
 
-              {/* Orbiting Elements */}
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-4 bg-navy-900 border border-cyan-500/30 px-3 py-1 rounded text-xs text-cyan-400 font-mono">
-                Vision
-              </div>
-              <div className="absolute bottom-1/4 right-0 translate-x-4 bg-navy-900 border border-purple-500/30 px-3 py-1 rounded text-xs text-purple-400 font-mono">
+              {/* Orbiting Tech Keywords */}
+              <motion.div 
+                className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-4 bg-navy-900/80 backdrop-blur-sm border border-cyan-500/40 px-4 py-2 rounded-lg text-sm text-cyan-400 font-mono shadow-lg"
+                animate={{ y: [0, -5, 0] }}
+                transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+              >
+                AI/ML
+              </motion.div>
+              <motion.div 
+                className="absolute bottom-1/4 right-0 translate-x-8 bg-navy-900/80 backdrop-blur-sm border border-purple-500/40 px-4 py-2 rounded-lg text-sm text-purple-400 font-mono shadow-lg"
+                animate={{ x: [0, 5, 0] }}
+                transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+              >
                 Embedded
-              </div>
-              <div className="absolute bottom-1/4 left-0 -translate-x-4 bg-navy-900 border border-cyan-500/30 px-3 py-1 rounded text-xs text-cyan-400 font-mono">
-                ML
-              </div>
+              </motion.div>
+              <motion.div 
+                className="absolute bottom-1/4 left-0 -translate-x-8 bg-navy-900/80 backdrop-blur-sm border border-cyan-500/40 px-4 py-2 rounded-lg text-sm text-cyan-400 font-mono shadow-lg"
+                animate={{ x: [0, -5, 0] }}
+                transition={{ duration: 2.2, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+              >
+                IoT
+              </motion.div>
+              <motion.div 
+                className="absolute top-1/3 right-0 translate-x-6 bg-navy-900/80 backdrop-blur-sm border border-cyan-500/40 px-4 py-2 rounded-lg text-sm text-cyan-400 font-mono shadow-lg"
+                animate={{ y: [0, 5, 0] }}
+                transition={{ duration: 2.8, repeat: Infinity, ease: "easeInOut", delay: 0.3 }}
+              >
+                Vision
+              </motion.div>
+              <motion.div 
+                className="absolute top-1/3 left-0 -translate-x-6 bg-navy-900/80 backdrop-blur-sm border border-purple-500/40 px-4 py-2 rounded-lg text-sm text-purple-400 font-mono shadow-lg"
+                animate={{ y: [0, -5, 0] }}
+                transition={{ duration: 2.3, repeat: Infinity, ease: "easeInOut", delay: 0.7 }}
+              >
+                Robotics
+              </motion.div>
             </div>
           </motion.div>
         </div>
