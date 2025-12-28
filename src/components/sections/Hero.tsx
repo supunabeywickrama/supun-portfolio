@@ -55,7 +55,7 @@ export function Hero() {
           }} transition={{
             delay: 0.3
           }}>
-              Turning real-world Engineering problems into scalable Innovations
+              Turning real-world Engineering problems into scalable Innovations.
             </motion.h2>
 
             <motion.p className="text-lg text-slate-400 max-w-xl mb-8 leading-relaxed" initial={{
