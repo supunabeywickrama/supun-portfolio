@@ -1,7 +1,7 @@
 import React from 'react';
 import { Section } from '../ui/Section';
 import { Badge } from '../ui/Badge';
-import { Brain, Eye, Cpu, Code, Cloud } from 'lucide-react';
+import { Brain, Eye, Cpu, Code, Cloud, Box } from 'lucide-react';
 const skillCategories = [{
   title: 'AI & Machine Learning',
   icon: Brain,
@@ -22,6 +22,10 @@ const skillCategories = [{
   title: 'Cloud & Tools',
   icon: Cloud,
   skills: ['AWS', 'Firebase', 'Linux', 'Git/GitHub', 'FastAPI', 'Streamlit', 'Docker', 'ONNX']
+}, {
+  title: '3D Designing',
+  icon: Box,
+  skills: ['SolidWorks', 'AutoCAD', 'Dapan']
 }];
 export function Skills() {
   return <Section id="skills" title="Technical Skills">
