@@ -126,7 +126,7 @@ export function Hero() {
             </motion.div>
           </motion.div>
 
-          {/* Abstract Tech Visual */}
+          {/* Advanced Tech Visual */}
           <motion.div initial={{
           opacity: 0,
           scale: 0.9
@@ -137,38 +137,137 @@ export function Hero() {
           duration: 0.7
         }} className="hidden lg:block relative">
             <div className="relative w-full aspect-square max-w-md mx-auto">
-              {/* Decorative circles representing nodes */}
-              <div className="absolute inset-0 border border-cyan-500/20 rounded-full animate-[spin_10s_linear_infinite]" />
-              <div className="absolute inset-4 border border-purple-500/20 rounded-full animate-[spin_15s_linear_infinite_reverse]" />
-              <div className="absolute inset-12 border border-cyan-500/20 rounded-full animate-[spin_20s_linear_infinite]" />
+              {/* Animated rotating rings */}
+              <motion.div 
+                className="absolute inset-0 border-2 border-cyan-500/30 rounded-full"
+                animate={{ rotate: 360 }}
+                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+              />
+              <motion.div 
+                className="absolute inset-6 border-2 border-purple-500/20 rounded-full"
+                animate={{ rotate: -360 }}
+                transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+              />
+              <motion.div 
+                className="absolute inset-12 border border-cyan-500/20 rounded-full"
+                animate={{ rotate: 360 }}
+                transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+              />
+              
+              {/* Pulsating energy rings */}
+              <motion.div 
+                className="absolute inset-16 border-2 border-cyan-400/40 rounded-full"
+                animate={{ 
+                  scale: [1, 1.1, 1],
+                  opacity: [0.4, 0.6, 0.4]
+                }}
+                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+              />
 
-              {/* Central Hub with Animated Role */}
+              {/* Central Holographic Hub */}
               <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-48 h-48 bg-navy-800/50 rounded-full border border-cyan-500/50 flex items-center justify-center shadow-[0_0_50px_rgba(0,217,255,0.3)] relative z-10 backdrop-blur-sm">
-                  <AnimatePresence mode="wait">
+                <div className="relative">
+                  {/* Glowing backdrop */}
+                  <motion.div 
+                    className="absolute inset-0 w-56 h-56 bg-gradient-to-br from-cyan-500/20 to-purple-500/20 rounded-full blur-2xl"
+                    animate={{ 
+                      scale: [1, 1.2, 1],
+                      opacity: [0.3, 0.5, 0.3]
+                    }}
+                    transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                  />
+                  
+                  {/* Main display */}
+                  <div className="relative w-56 h-56 bg-navy-900/90 rounded-full border-2 border-cyan-500/60 flex items-center justify-center shadow-[0_0_60px_rgba(0,217,255,0.4)] backdrop-blur-md overflow-hidden">
+                    {/* Animated grid background */}
                     <motion.div 
-                      key={currentRole}
-                      className="text-center px-4"
-                      initial={{ opacity: 0, scale: 0.8, rotateY: 90 }}
-                      animate={{ opacity: 1, scale: 1, rotateY: 0 }}
-                      exit={{ opacity: 0, scale: 0.8, rotateY: -90 }}
-                      transition={{ duration: 0.6, ease: "easeInOut" }}
-                    >
-                      <div className="text-cyan-400 font-mono text-lg font-bold leading-tight">
-                        {roles[currentRole]}
-                      </div>
-                    </motion.div>
-                  </AnimatePresence>
+                      className="absolute inset-0 opacity-10"
+                      style={{
+                        backgroundImage: 'linear-gradient(cyan 1px, transparent 1px), linear-gradient(90deg, cyan 1px, transparent 1px)',
+                        backgroundSize: '20px 20px'
+                      }}
+                      animate={{ 
+                        backgroundPosition: ['0px 0px', '20px 20px']
+                      }}
+                      transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+                    />
+                    
+                    {/* Role title with advanced animation */}
+                    <AnimatePresence mode="wait">
+                      <motion.div 
+                        key={currentRole}
+                        className="text-center px-6 relative z-10"
+                        initial={{ 
+                          opacity: 0, 
+                          scale: 0.5,
+                          rotateX: -90,
+                          filter: "blur(10px)"
+                        }}
+                        animate={{ 
+                          opacity: 1, 
+                          scale: 1,
+                          rotateX: 0,
+                          filter: "blur(0px)"
+                        }}
+                        exit={{ 
+                          opacity: 0, 
+                          scale: 0.5,
+                          rotateX: 90,
+                          filter: "blur(10px)"
+                        }}
+                        transition={{ 
+                          duration: 0.7,
+                          ease: [0.23, 1, 0.32, 1]
+                        }}
+                      >
+                        <motion.div 
+                          className="text-xl font-bold leading-tight bg-gradient-to-r from-cyan-400 via-cyan-300 to-purple-400 bg-clip-text text-transparent"
+                          animate={{ 
+                            backgroundPosition: ['0% 50%', '100% 50%', '0% 50%']
+                          }}
+                          transition={{ 
+                            duration: 3, 
+                            repeat: Infinity, 
+                            ease: "linear" 
+                          }}
+                          style={{
+                            backgroundSize: '200% 200%'
+                          }}
+                        >
+                          {roles[currentRole]}
+                        </motion.div>
+                        
+                        {/* Scan line effect */}
+                        <motion.div 
+                          className="absolute inset-0 h-0.5 bg-gradient-to-r from-transparent via-cyan-400 to-transparent"
+                          animate={{ 
+                            top: ['0%', '100%']
+                          }}
+                          transition={{ 
+                            duration: 2, 
+                            repeat: Infinity, 
+                            ease: "linear" 
+                          }}
+                        />
+                      </motion.div>
+                    </AnimatePresence>
+                    
+                    {/* Corner accents */}
+                    <div className="absolute top-4 left-4 w-4 h-4 border-l-2 border-t-2 border-cyan-400/60" />
+                    <div className="absolute top-4 right-4 w-4 h-4 border-r-2 border-t-2 border-cyan-400/60" />
+                    <div className="absolute bottom-4 left-4 w-4 h-4 border-l-2 border-b-2 border-cyan-400/60" />
+                    <div className="absolute bottom-4 right-4 w-4 h-4 border-r-2 border-b-2 border-cyan-400/60" />
+                  </div>
                 </div>
               </div>
 
-              {/* Orbiting Tech Keywords */}
+              {/* Static Labels on Circle */}
               <motion.div 
                 className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-4 bg-navy-900/80 backdrop-blur-sm border border-cyan-500/40 px-4 py-2 rounded-lg text-sm text-cyan-400 font-mono shadow-lg"
                 animate={{ y: [0, -5, 0] }}
                 transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
               >
-                AI/ML
+                Computer Vision
               </motion.div>
               <motion.div 
                 className="absolute bottom-1/4 right-0 translate-x-8 bg-navy-900/80 backdrop-blur-sm border border-purple-500/40 px-4 py-2 rounded-lg text-sm text-purple-400 font-mono shadow-lg"
@@ -182,21 +281,7 @@ export function Hero() {
                 animate={{ x: [0, -5, 0] }}
                 transition={{ duration: 2.2, repeat: Infinity, ease: "easeInOut", delay: 1 }}
               >
-                IoT
-              </motion.div>
-              <motion.div 
-                className="absolute top-1/3 right-0 translate-x-6 bg-navy-900/80 backdrop-blur-sm border border-cyan-500/40 px-4 py-2 rounded-lg text-sm text-cyan-400 font-mono shadow-lg"
-                animate={{ y: [0, 5, 0] }}
-                transition={{ duration: 2.8, repeat: Infinity, ease: "easeInOut", delay: 0.3 }}
-              >
-                Vision
-              </motion.div>
-              <motion.div 
-                className="absolute top-1/3 left-0 -translate-x-6 bg-navy-900/80 backdrop-blur-sm border border-purple-500/40 px-4 py-2 rounded-lg text-sm text-purple-400 font-mono shadow-lg"
-                animate={{ y: [0, -5, 0] }}
-                transition={{ duration: 2.3, repeat: Infinity, ease: "easeInOut", delay: 0.7 }}
-              >
-                Robotics
+                AI/ML
               </motion.div>
             </div>
           </motion.div>
