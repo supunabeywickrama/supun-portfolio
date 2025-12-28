@@ -25,7 +25,7 @@ const skillCategories = [{
 }, {
   title: '3D Designing',
   icon: Box,
-  skills: ['SolidWorks', 'AutoCAD']
+  skills: ['SolidWorks', 'AutoCAD', 'Dapan']
 }];
 export function Skills() {
   return <Section id="skills" title="Technical Skills">

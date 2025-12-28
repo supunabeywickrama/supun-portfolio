@@ -1,9 +1,10 @@
-import React, { memo, Component, useState } from 'react';
+import React, { memo, Component, useState, useEffect } from 'react';
 import { Section } from '../ui/Section';
 import { Card } from '../ui/Card';
 import { Badge } from '../ui/Badge';
 import { Button } from '../ui/Button';
-import { Github, ExternalLink, Folder } from 'lucide-react';
+import { Github, ExternalLink, Folder, ChevronLeft, ChevronRight } from 'lucide-react';
+
 const projects = [{
   title: 'Advanced Crowd Detection using SAHI-Enhanced YOLOv12',
   description: 'Developed a high-accuracy crowd detection and counting system by integrating YOLOv12 with SAHI slicing to improve small-person detection in dense scenes. Achieved better recall and robustness on high-resolution images and videos for surveillance and crowd analytics applications.',
@@ -69,54 +70,132 @@ const projects = [{
     demo: 'https://www.linkedin.com/posts/supun-tharaka-6bb8b5278_ai-computervision-faciallandmarkdetection-activity-7381924718272143360-ktR8?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEi98joBQA_8qLK6GmUJUbynIYQWUJGBcn4'
   }
 }];
+
 export function Projects() {
-  const [showAll, setShowAll] = useState(false);
-  const displayedProjects = showAll ? projects : projects.slice(0, 3);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const cardsPerView = 3;
+  const totalSlides = Math.ceil(projects.length / cardsPerView);
 
-  return <Section id="projects" title="Featured Projects">
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        {displayedProjects.map((project, index) => <Card key={index} hoverEffect className="flex flex-col h-full">
-            <div className="p-4 flex flex-col h-full">
-              <div className="flex justify-between items-start mb-3">
-                <div className="p-2 bg-navy-900 rounded-lg text-cyan-400">
-                  <Folder className="h-5 w-5" />
-                </div>
-                <div className="flex gap-2">
-                  <a href={project.links.github} target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-cyan-400 transition-colors" aria-label="GitHub">
-                    <Github className="h-4 w-4" />
-                  </a>
-                  <a href={project.links.demo} target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-cyan-400 transition-colors" aria-label="Live Demo">
-                    <ExternalLink className="h-4 w-4" />
-                  </a>
-                </div>
-              </div>
+  useEffect(() => {
+    const interval = setInterval(() => {
+      nextSlide();
+    }, 5000); // Auto-slide every 5 seconds
 
-              <h3 className="text-lg font-bold text-slate-100 mb-2 group-hover:text-cyan-400 transition-colors">
-                {project.title}
-              </h3>
+    return () => clearInterval(interval);
+  }, [currentIndex]);
 
-              <p className="text-slate-400 mb-4 flex-grow text-sm leading-relaxed">
-                {project.description}
-              </p>
+  const nextSlide = () => {
+    setCurrentIndex((prev) => (prev + 1) % totalSlides);
+  };
 
-              <div className="flex flex-wrap gap-2 mt-auto">
-                {project.tech.map(t => <span key={t} className="text-xs font-mono text-cyan-400/80">
-                    {t}
-                  </span>)}
-              </div>
-            </div>
-          </Card>)}
-      </div>
+  const prevSlide = () => {
+    setCurrentIndex((prev) => (prev - 1 + totalSlides) % totalSlides);
+  };
 
-      {projects.length > 3 && (
-        <div className="flex justify-center mt-8">
-          <Button 
-            onClick={() => setShowAll(!showAll)}
-            variant="outline"
+  const goToSlide = (index: number) => {
+    setCurrentIndex(index);
+  };
+
+  return (
+    <Section id="projects" title="Featured Projects">
+      <div className="relative max-w-7xl mx-auto">
+        {/* Navigation Arrows */}
+        <button
+          onClick={prevSlide}
+          className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 md:-translate-x-12 z-10 bg-navy-800/80 hover:bg-navy-700 text-cyan-400 p-2 md:p-3 rounded-full transition-colors shadow-lg"
+          aria-label="Previous projects"
+        >
+          <ChevronLeft className="h-5 w-5 md:h-6 md:w-6" />
+        </button>
+        
+        <button
+          onClick={nextSlide}
+          className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 md:translate-x-12 z-10 bg-navy-800/80 hover:bg-navy-700 text-cyan-400 p-2 md:p-3 rounded-full transition-colors shadow-lg"
+          aria-label="Next projects"
+        >
+          <ChevronRight className="h-5 w-5 md:h-6 md:w-6" />
+        </button>
+
+        {/* Slider Container */}
+        <div className="overflow-hidden">
+          <div 
+            className="flex transition-transform duration-500 ease-in-out"
+            style={{ transform: `translateX(-${currentIndex * 100}%)` }}
           >
-            {showAll ? 'Show Less' : `Show More Projects (${projects.length - 3})`}
-          </Button>
+            {Array.from({ length: totalSlides }).map((_, slideIndex) => (
+              <div key={slideIndex} className="w-full flex-shrink-0">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-2">
+                  {projects
+                    .slice(slideIndex * cardsPerView, (slideIndex + 1) * cardsPerView)
+                    .map((project, index) => (
+                      <Card key={index} hoverEffect className="flex flex-col h-full">
+                        <div className="p-6 flex flex-col h-full">
+                          <div className="flex justify-between items-start mb-4">
+                            <div className="p-2 bg-navy-900 rounded-lg text-cyan-400">
+                              <Folder className="h-6 w-6" />
+                            </div>
+                            <div className="flex gap-3">
+                              <a 
+                                href={project.links.github} 
+                                target="_blank" 
+                                rel="noopener noreferrer" 
+                                className="text-slate-400 hover:text-cyan-400 transition-colors" 
+                                aria-label="GitHub"
+                              >
+                                <Github className="h-5 w-5" />
+                              </a>
+                              <a 
+                                href={project.links.demo} 
+                                target="_blank" 
+                                rel="noopener noreferrer" 
+                                className="text-slate-400 hover:text-cyan-400 transition-colors" 
+                                aria-label="Live Demo"
+                              >
+                                <ExternalLink className="h-5 w-5" />
+                              </a>
+                            </div>
+                          </div>
+
+                          <h3 className="text-xl font-bold text-slate-100 mb-3 group-hover:text-cyan-400 transition-colors">
+                            {project.title}
+                          </h3>
+
+                          <p className="text-slate-400 mb-4 flex-grow leading-relaxed text-sm">
+                            {project.description}
+                          </p>
+
+                          <div className="flex flex-wrap gap-2 mt-auto">
+                            {project.tech.map(t => (
+                              <span key={t} className="text-xs font-mono text-cyan-400/80 bg-cyan-400/10 px-2 py-1 rounded">
+                                {t}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+                      </Card>
+                    ))}
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
-      )}
-    </Section>;
+
+        {/* Dots Navigation */}
+        <div className="flex justify-center gap-2 mt-8">
+          {Array.from({ length: totalSlides }).map((_, index) => (
+            <button
+              key={index}
+              onClick={() => goToSlide(index)}
+              className={`h-2 rounded-full transition-all ${
+                index === currentIndex 
+                  ? 'bg-cyan-400 w-8' 
+                  : 'bg-slate-600 hover:bg-slate-500 w-2'
+              }`}
+              aria-label={`Go to slide ${index + 1}`}
+            />
+          ))}
+        </div>
+      </div>
+    </Section>
+  );
 }
