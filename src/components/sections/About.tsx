@@ -24,7 +24,7 @@ export function About() {
         <div className="flex-1 lg:w-2/3 space-y-6">
           <div className="space-y-6 text-slate-400 leading-relaxed">
             <p>
-              I am a 4rd-year{' '}
+              I am a 4th-year{' '}
               <span className="text-white font-medium">
                 BSc (Hons) Electronics and Computer Science
               </span>{' '}
