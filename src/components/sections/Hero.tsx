@@ -4,12 +4,12 @@ import { ArrowRight, Download, Github, Linkedin, Mail } from 'lucide-react';
 import { Button } from '../ui/Button';
 export function Hero() {
   const roles = [
-    'Embedded Systems Engineer',
-    'Robotics Engineer',
-    'AI/ML Engineer',
-    'Computer Vision Engineer',
-    'Automation Engineer',
-    'Mechatronics Engineer'
+    'Embedded Systems Engineering',
+    'Robotics Engineering',
+    'AI/ML Engineering',
+    'Computer Vision Engineering',
+    'Automation Engineering',
+    'Mechatronics Engineering'
   ];
   
   const [currentRole, setCurrentRole] = useState(0);
