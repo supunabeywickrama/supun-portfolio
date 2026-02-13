@@ -50,7 +50,7 @@ export function Navbar() {
                 </span>
                 {item.name}
               </a>)}
-            <a href="https://drive.google.com/uc?export=download&id=17PjBhrlhAPa94XHuLM53nqHAVGSsZ0w1" target="_blank" rel="noopener noreferrer" className="px-4 py-2 text-sm font-mono text-cyan-400 border border-cyan-400/30 rounded hover:bg-cyan-400/10 transition-colors">
+            <a href="https://drive.google.com/uc?export=download&id=6o6HO0bf4qZgIAMCDm9EjjjQI2DEh" target="_blank" rel="noopener noreferrer" className="px-4 py-2 text-sm font-mono text-cyan-400 border border-cyan-400/30 rounded hover:bg-cyan-400/10 transition-colors">
               Resume
             </a>
           </div>
