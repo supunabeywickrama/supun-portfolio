@@ -5,7 +5,43 @@ import { Badge } from '../ui/Badge';
 import { Button } from '../ui/Button';
 import { Github, ExternalLink, Folder, ChevronLeft, ChevronRight } from 'lucide-react';
 
-const projects = [{
+const projects = [
+   {
+    title: 'MindPath – AI Depression Support Platform 🧠💙',
+    description: 'MindPath is an AI-powered mental wellness platform that helps users manage mental health through journaling, mood tracking, habit building, insights dashboards, and an empathetic virtual assistant (Sela). It uses RAG-based memory (pgvector) for personalized support, detects crisis/self-harm intent with automatic safe-response flow, and features analytics, reminders, and customizable user settings. Keywords: AI Wellness, Depression Support, LLM Chatbot, Virtual Assistant, RAG, Vector Memory, Semantic Search, pgvector, Embeddings, Personalized Recommendations, Mood Analytics, Habit Tracking, Smart Journaling, Thought Reframing, Safety Guardrails, Crisis Detection, Email Notifications, OIDC/OAuth2, JWT, Prompt Engineering, Multimodal AI, Face Landmarking, TTS/STT, WebSockets.',
+    tech: [
+      'React (Vite)', 'TypeScript', 'TailwindCSS', 'React Router', 'Recharts', 'Lucide React', 'zod', 'clsx',
+      'FastAPI', 'Uvicorn', 'PostgreSQL', 'pgvector', 'SQLAlchemy', 'Alembic', 'Pydantic', 'OpenAI API', 'python-jose', 'httpx/requests',
+      'Docker', 'Postman', 'Asgardeo', 'OIDC/OAuth2'
+    ],
+    links: {
+      github: 'https://github.com/supunabeywickrama/mindpath-ai',
+      demo: ''
+    }
+  },
+  {
+    title: 'RehabX – Finger Runner',
+    description: 'Webcam-based rehabilitation game using real-time hand tracking to convert finger movements into gameplay. Features per-finger calibration (0%-100%), gesture smoothing, adaptive jump physics, performance logging, and gamified feedback (combo scoring, achievements). Keywords: Hand Gesture Recognition, Finger Tracking, Rehabilitation Gaming, Computer Vision, HCI, Gamified Therapy, Real-Time Motion Tracking.',
+    tech: [
+      'Python', 'MediaPipe Hands', 'OpenCV', 'Pygame', 'NumPy', 'JSON', 'CSV'
+    ],
+    links: {
+      github: 'https://github.com/supunabeywickrama/Full-Body-Estimation-using-Media-Pipe-Holistic',
+      demo: ''
+    }
+  },
+  {
+    title: 'Arm Ability Tracker (MediaPipe Holistic)',
+    description: 'Real-time computer vision system for tracking arm range of motion (ROM), finger dexterity, 3D joint angles via webcam. Features interactive calibration (wizard/manual) for joints, live angle measurement, rehab targets, CSV logging, video recording with overlays, and all-local processing for privacy and low-latency in clinical settings. Keywords: Arm ROM Tracking, Joint Angle Estimation, Finger Dexterity Analysis, Computer Vision Rehabilitation, MediaPipe Holistic, Biomechanics, Gesture Tracking, Clinical Calibration.',
+    tech: [
+      'Python', 'MediaPipe Holistic', 'OpenCV', 'NumPy', 'JSON', 'CSV'
+    ],
+    links: {
+      github: 'https://github.com/supunabeywickrama/Arm-Ability-Tracker-MediaPipe-Holistic-',
+      demo: ''
+    }
+  }, 
+  {
   title: 'Advanced Crowd Detection using SAHI-Enhanced YOLOv12',
   description: 'Developed a high-accuracy crowd detection and counting system by integrating YOLOv12 with SAHI slicing to improve small-person detection in dense scenes. Achieved better recall and robustness on high-resolution images and videos for surveillance and crowd analytics applications.',
   tech: ['Python', 'YOLOv12', 'SAHI', 'Computer Vision', 'PyTorch', 'OpenCV'],
@@ -13,7 +49,8 @@ const projects = [{
     github: 'https://github.com/supunabeywickrama/Advanced-Crowd-Detection-using-SAHI-Enhanced-YOLOv12',
     demo: 'https://www.linkedin.com/posts/supun-tharaka-6bb8b5278_computervision-yolov12-ultralytics-activity-7408493714505076736-cE83?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEi98joBQA_8qLK6GmUJUbynIYQWUJGBcn4'
   }
-}, {
+}, 
+  {
   title: 'Multi-Image Component Matching using OpenCV & Python',
   description: 'Developed a computer vision system for detecting and matching electronic components across multiple images using feature-based image matching techniques. The project implements Brute Force, KNN, and FLANN matching with SIFT features to automatically identify unique components and build a registry indicating their presence across images. Designed as a foundation for electronics automation, component analysis, and future machine-learning integration.',
   tech: ['Python', 'OpenCV', 'SIFT', 'FLANN', 'KNN', 'Computer Vision'],
