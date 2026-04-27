@@ -38,11 +38,10 @@ export function About() {
               <span className="text-cyan-400">multi-agent LLM systems</span>, and{' '}
               <span className="text-cyan-400">intelligent automation</span> end-to-end —
               from dataset curation and model training through FastAPI backends and React
-              frontends to Docker deployment. My IEEE-accepted research on agentic
-              AI for industrial predictive maintenance achieved{' '}
-              <span className="text-white font-medium">90.15% precision</span> and a{' '}
-              <span className="text-white font-medium">300× latency reduction</span> over
-              manual baselines.
+              frontends to production deployment. My IEEE-accepted research on agentic AI
+              for industrial predictive maintenance demonstrates how combining deep learning
+              with LLM reasoning can eliminate diagnostic bottlenecks and transform reactive
+              maintenance into proactive, data-driven operations.
             </p>
             <p>
               I am proficient in{' '}
