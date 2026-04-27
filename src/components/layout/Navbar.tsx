@@ -50,7 +50,7 @@ export function Navbar() {
                 </span>
                 {item.name}
               </a>)}
-            <a href="https://drive.google.com/uc?export=download&id=1WxQuvAB1IrCVhbOUPbgVk2jBbANqzSty" target="_blank" rel="noopener noreferrer" className="px-4 py-2 text-sm font-mono text-cyan-400 border border-cyan-400/30 rounded hover:bg-cyan-400/10 transition-colors">
+            <a href="https://drive.google.com/uc?export=download&id=1IYFvrgTOxrTfYFCRKiGMTNNRJeAhyLpp" target="_blank" rel="noopener noreferrer" className="px-4 py-2 text-sm font-mono text-cyan-400 border border-cyan-400/30 rounded hover:bg-cyan-400/10 transition-colors">
               Resume
             </a>
           </div>
@@ -83,7 +83,7 @@ export function Navbar() {
                   </span>
                   {item.name}
                 </a>)}
-              <a href="https://drive.google.com/uc?export=download&id=17PjBhrlhAPa94XHuLM53nqHAVGSsZ0w1" target="_blank" rel="noopener noreferrer" className="block mt-4 mx-3 px-4 py-3 text-center text-base font-mono text-navy-900 bg-cyan-400 rounded-md hover:bg-cyan-500">
+              <a href="https://drive.google.com/uc?export=download&id=1IYFvrgTOxrTfYFCRKiGMTNNRJeAhyLpp" target="_blank" rel="noopener noreferrer" className="block mt-4 mx-3 px-4 py-3 text-center text-base font-mono text-navy-900 bg-cyan-400 rounded-md hover:bg-cyan-500">
                 Download Resume
               </a>
             </div>
