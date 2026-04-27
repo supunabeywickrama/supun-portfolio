@@ -19,16 +19,16 @@ export function Education() {
               <p className="text-cyan-400 font-mono text-sm mb-1">
                 University of Kelaniya
               </p>
-              <p className="text-slate-400 text-sm mb-2">Current CGPA: 3.425</p>
+              <p className="text-slate-400 text-sm mb-2">CGPA: <span className="text-cyan-400 font-medium">3.825 / 4.00</span></p>
               <p className="text-slate-500 text-sm">
-                Specializing in AI, Embedded Systems, and Computer Vision.
+                Specializing in applied AI/ML, Computer Vision, and Multi-Agent LLM Systems.
               </p>
             </div>
 
             <div className="relative">
               <span className="absolute -left-[39px] top-1 h-5 w-5 rounded-full border-2 border-navy-600 bg-navy-900" />
               <h4 className="text-lg font-bold text-slate-200">
-                G.C.E. Advanced Level – Physical Science
+                G.C.E. Advanced Level – Mathematics Stream
               </h4>
               <p className="text-cyan-400 font-mono text-sm mb-1">
                 Ruhunu Vijayaba College

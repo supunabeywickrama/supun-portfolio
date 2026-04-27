@@ -5,6 +5,9 @@ const navItems = [{
   name: 'About',
   href: '#about'
 }, {
+  name: 'Research',
+  href: '#research'
+}, {
   name: 'Skills',
   href: '#skills'
 }, {
@@ -13,9 +16,6 @@ const navItems = [{
 }, {
   name: 'Education',
   href: '#education'
-}, {
-  name: 'Leadership',
-  href: '#leadership'
 }, {
   name: 'Contact',
   href: '#contact'

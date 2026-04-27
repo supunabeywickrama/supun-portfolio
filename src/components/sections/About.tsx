@@ -24,28 +24,34 @@ export function About() {
         <div className="flex-1 lg:w-2/3 space-y-6">
           <div className="space-y-6 text-slate-400 leading-relaxed">
             <p>
-              I am a 4th-year{' '}
+              I am a final-year{' '}
               <span className="text-white font-medium">
                 BSc (Hons) Electronics and Computer Science
               </span>{' '}
-              undergraduate at the University of Kelaniya, passionate about
-              bridging the gap between hardware and intelligent software.
+              undergraduate at the University of Kelaniya, specializing in applied
+              AI/ML with a track record of shipping production-grade systems and
+              published research.
             </p>
             <p>
-              My primary focus lies in{' '}
-              <span className="text-cyan-400">Artificial Intelligence</span>,{' '}
-              <span className="text-cyan-400">Machine Learning</span>, and{' '}
-              <span className="text-cyan-400">Computer Vision</span>, specifically
-              in deploying efficient models on edge devices. I have hands-on
-              experience deploying YOLO models, autoencoders, MediaPipe, and
-              Real-ESRGAN on resource-constrained hardware like{' '}
-              <span className="text-white font-mono text-sm">ESP32</span> and{' '}
-              <span className="text-white font-mono text-sm">Raspberry Pi</span>.
+              I build{' '}
+              <span className="text-cyan-400">computer vision pipelines</span>,{' '}
+              <span className="text-cyan-400">multi-agent LLM systems</span>, and{' '}
+              <span className="text-cyan-400">intelligent automation</span> end-to-end —
+              from dataset curation and model training through FastAPI backends and React
+              frontends to Docker deployment. My IEEE-accepted research on agentic
+              AI for industrial predictive maintenance achieved{' '}
+              <span className="text-white font-medium">90.15% precision</span> and a{' '}
+              <span className="text-white font-medium">300× latency reduction</span> over
+              manual baselines.
             </p>
             <p>
-              I enjoy solving complex engineering problems by combining robust
-              software architectures with real-world sensor data, creating
-              automation systems that are both scalable and practical.
+              I am proficient in{' '}
+              <span className="text-white font-mono text-sm">Python</span>,{' '}
+              <span className="text-white font-mono text-sm">PyTorch</span>,{' '}
+              <span className="text-white font-mono text-sm">LangGraph</span>,{' '}
+              <span className="text-white font-mono text-sm">LangChain</span>, and{' '}
+              <span className="text-white font-mono text-sm">OpenCV</span>, and I thrive at the
+              intersection of research and real-world engineering.
             </p>
 
             <div className="flex items-center gap-2 text-slate-300 pt-4">
@@ -63,19 +69,19 @@ export function About() {
             <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <li className="flex items-center gap-3 text-slate-400 text-sm">
                 <span className="h-1.5 w-1.5 rounded-full bg-cyan-400" />
-                Edge AI & ML Deployment
+                Applied AI/ML & Deep Learning
               </li>
               <li className="flex items-center gap-3 text-slate-400 text-sm">
                 <span className="h-1.5 w-1.5 rounded-full bg-cyan-400" />
-                Computer Vision Systems
+                Computer Vision Pipelines
               </li>
               <li className="flex items-center gap-3 text-slate-400 text-sm">
                 <span className="h-1.5 w-1.5 rounded-full bg-cyan-400" />
-                IoT & Embedded Systems
+                Multi-Agent LLM Systems & RAG
               </li>
               <li className="flex items-center gap-3 text-slate-400 text-sm">
                 <span className="h-1.5 w-1.5 rounded-full bg-cyan-400" />
-                Real-time Automation
+                Full-Stack ML Applications
               </li>
             </ul>
           </div>

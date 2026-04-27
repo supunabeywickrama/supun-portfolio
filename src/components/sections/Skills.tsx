@@ -1,31 +1,31 @@
 import React from 'react';
 import { Section } from '../ui/Section';
 import { Badge } from '../ui/Badge';
-import { Brain, Eye, Cpu, Code, Cloud, Box } from 'lucide-react';
+import { Brain, Eye, Cpu, Code, Cloud, Network } from 'lucide-react';
 const skillCategories = [{
-  title: 'AI & Machine Learning',
+  title: 'ML / Deep Learning',
   icon: Brain,
-  skills: ['YOLOv8', 'YOLOv11', 'DINOv3', 'Autoencoders', 'Whisper', 'MediaPipe', 'TensorFlow Lite', 'PyTorch']
+  skills: ['PyTorch', 'TensorFlow/Keras', 'scikit-learn', 'Autoencoders', 'ONNX', 'TensorRT', 'NumPy', 'Pandas']
+}, {
+  title: 'LLM & Agentic AI',
+  icon: Network,
+  skills: ['LangChain', 'LangGraph', 'RAG', 'Multi-Agent Orchestration', 'Prompt Engineering', 'OpenAI API', 'Whisper', 'n8n']
 }, {
   title: 'Computer Vision',
   icon: Eye,
-  skills: ['Object Detection', 'Object Tracking', 'OCR', 'Video Processing', 'OpenCV', 'Real-ESRGAN']
+  skills: ['OpenCV', 'YOLOv8/11/12', 'SAM', 'MediaPipe', 'SAHI', 'Real-ESRGAN', 'Tesseract OCR', 'Roboflow']
+}, {
+  title: 'Backend & MLOps',
+  icon: Cloud,
+  skills: ['FastAPI', 'Docker', 'PostgreSQL', 'pgvector', 'AWS', 'GitHub Actions', 'InfluxDB', 'Streamlit']
+}, {
+  title: 'Frontend & Mobile',
+  icon: Code,
+  skills: ['React', 'Next.js', 'TypeScript', 'TailwindCSS', 'Flutter (Dart)', 'Vite', 'HTML/CSS']
 }, {
   title: 'Embedded & IoT',
   icon: Cpu,
-  skills: ['ESP32', 'Raspberry Pi', 'Arduino', 'LoRa', 'Edge Impulse', 'Sensors & Actuators', 'PCB Design']
-}, {
-  title: 'Programming',
-  icon: Code,
-  skills: ['Python', 'C/C++', 'MATLAB', 'Java', 'Dart', 'Flutter', 'HTML/CSS', 'SQL']
-}, {
-  title: 'Cloud & Tools',
-  icon: Cloud,
-  skills: ['AWS', 'Firebase', 'Linux', 'Git/GitHub', 'FastAPI', 'Streamlit', 'Docker', 'ONNX']
-}, {
-  title: '3D Designing',
-  icon: Box,
-  skills: ['SolidWorks', 'AutoCAD']
+  skills: ['ESP32', 'Raspberry Pi', 'Arduino', 'LoRa', 'Edge Impulse', 'ROS', 'PCB Design']
 }];
 export function Skills() {
   return <Section id="skills" title="Technical Skills">

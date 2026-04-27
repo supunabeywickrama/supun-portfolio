@@ -4,12 +4,12 @@ import { ArrowRight, Download, Github, Linkedin, Mail } from 'lucide-react';
 import { Button } from '../ui/Button';
 export function Hero() {
   const roles = [
-    'Embedded Systems Engineering',
-    'Robotics Engineering',
-    'AI/ML Engineering',
+    'AI / ML Engineering',
     'Computer Vision Engineering',
-    'Automation Engineering',
-    'Mechatronics Engineering'
+    'LLM & Agentic AI Systems',
+    'Deep Learning Research',
+    'Full-Stack ML Engineering',
+    'Multi-Agent Orchestration',
   ];
   
   const [currentRole, setCurrentRole] = useState(0);
@@ -72,7 +72,7 @@ export function Hero() {
           }} transition={{
             delay: 0.3
           }}>
-              Turning real-world Engineering problems into scalable Innovations.
+              Building production AI systems that perceive, reason, and act.
             </motion.h2>
 
             <motion.p className="text-lg text-slate-400 max-w-xl mb-8 leading-relaxed" initial={{
@@ -84,10 +84,11 @@ export function Hero() {
           }} transition={{
             delay: 0.4
           }}>
-              Electronics & Computer Science Undergraduate specializing in{' '}
-              <span className="text-cyan-400">AI</span>,{' '}
+              Final-year BSc undergraduate specializing in applied{' '}
+              <span className="text-cyan-400">AI/ML</span>,{' '}
               <span className="text-cyan-400">Computer Vision</span>, and{' '}
-              <span className="text-cyan-400">IoT</span>. 
+              <span className="text-cyan-400">Multi-Agent LLM Systems</span>.
+              Published IEEE researcher. Seeking an AI/ML Engineering role.
             </motion.p>
 
             <motion.div className="flex flex-wrap gap-4 mb-12" initial={{
@@ -269,12 +270,12 @@ export function Hero() {
               >
                 Computer Vision
               </motion.div>
-              <motion.div 
+              <motion.div
                 className="absolute bottom-1/4 right-0 translate-x-8 bg-navy-900/80 backdrop-blur-sm border border-purple-500/40 px-4 py-2 rounded-lg text-sm text-purple-400 font-mono shadow-lg"
                 animate={{ x: [0, 5, 0] }}
                 transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
               >
-                Embedded
+                LLM / RAG
               </motion.div>
               <motion.div 
                 className="absolute bottom-1/4 left-0 -translate-x-8 bg-navy-900/80 backdrop-blur-sm border border-cyan-500/40 px-4 py-2 rounded-lg text-sm text-cyan-400 font-mono shadow-lg"
