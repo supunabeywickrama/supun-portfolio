@@ -19,7 +19,7 @@ export function Education() {
               <p className="text-cyan-400 font-mono text-sm mb-1">
                 University of Kelaniya
               </p>
-              <p className="text-slate-400 text-sm mb-2">CGPA: <span className="text-cyan-400 font-medium">3.825 / 4.00</span></p>
+              <p className="text-slate-400 text-sm mb-2">CGPA: <span className="text-cyan-400 font-medium">3.525 / 4.00</span></p>
               <p className="text-slate-500 text-sm">
                 Specializing in applied AI/ML, Computer Vision, and Multi-Agent LLM Systems.
               </p>
