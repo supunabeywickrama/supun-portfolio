@@ -5,6 +5,15 @@ import { Github, ExternalLink } from 'lucide-react';
 
 const projects = [
   {
+    shortTitle: 'Enterprise AI Ops Copilot',
+    title: 'Enterprise AI Operations Copilot — Amazon Bedrock',
+    period: '2025',
+    description:
+      'Production-style GenAI system built end-to-end on Amazon Bedrock. An ops engineer asks "The payment API is timing out — find similar past incidents, check current metrics, and draft a Teams update." The system classifies the request, routes it through a LangGraph multi-tool agent, retrieves runbooks via RAG vector search, queries past incident tickets and service metrics, and drafts a Teams message gated behind human approval — all screened through a guardrails layer for prompt-injection detection and PII masking. Includes an automated evaluation suite (intent, tool-selection, retrieval scoring), 58-test CI/CD pipeline on GitHub Actions, and a full AWS architecture defined as Terraform IaC (S3 → EventBridge → Step Functions → Lambda/ECS → OpenSearch → Bedrock).',
+    tech: ['Python', 'FastAPI', 'Amazon Bedrock (Claude Haiku 4.5)', 'LangGraph', 'ChromaDB', 'Docker', 'Terraform', 'GitHub Actions', 'AWS'],
+    links: { github: 'https://github.com/supunabeywickrama/enterprise-ai-ops-copilot', demo: '' },
+  },
+  {
     shortTitle: 'Smart Component Identifier',
     title: 'Smart Electronic Component Identifier',
     period: 'Dec 2025 – Present',
