@@ -27,6 +27,28 @@ const research = [
     ],
   },
   {
+    title: 'Multi-Agent AI Framework for Real-Time Flood Disaster Response Using Satellite Imagery and Geospatial Analysis',
+    affiliation: 'University of Kelaniya Research',
+    period: 'Apr 2026 – Present',
+    status: 'In Progress',
+    statusColor: 'purple' as const,
+    badge: 'Abstract accepted — iPURSE 2026',
+    contributions: [
+      'Designing an autonomous multi-agent AI platform that delivers end-to-end flood emergency response through a single user interaction, transforming fragmented GIS workflows into a unified, minutes-long autonomous operation accessible to non-expert first responders.',
+      'Architecting four specialised agents orchestrated via CrewAI with a Llama 3.2 reasoning backbone, collectively performing 14 integrated response functions covering hazard detection, infrastructure impact, evacuation logistics, and community coordination.',
+      'Fine-tuning a Qwen2-VL-7B vision–language model via Low-Rank Adaptation (LoRA) on AMD Instinct MI300X GPU for satellite image damage classification and damage-zone GeoJSON polygon generation — returning results in under 5 seconds per image.',
+      'Building a live-data agent that retrieves hourly precipitation from Open-Meteo API, generates flood polygons, and spatially intersects them with OpenStreetMap road networks via GeoPandas to identify blocked segments.',
+      'Implementing a routing agent that computes optimal hazard-avoidant evacuation paths via NetworkX, alongside supplementary modules for early warning alerts, 7-day flood forecasting, shelter localisation, crowd-sourced incident reporting, missing-person tracking, and offline-resilient HTML map export.',
+    ],
+    tech: ['Python', 'CrewAI', 'Llama 3.2', 'Qwen2-VL-7B', 'LoRA', 'FastAPI', 'Streamlit', 'Folium', 'GeoPandas', 'NetworkX', 'OpenStreetMap', 'Open-Meteo API', 'Docker'],
+    metrics: [
+      { label: 'Situational Report', value: '<60 s' },
+      { label: 'Damage GeoJSON', value: '<5 s' },
+      { label: 'Response Functions', value: '14' },
+      { label: 'Specialised Agents', value: '4' },
+    ],
+  },
+  {
     title: 'AI-Driven Real-Time Packaging Defect Detection & PLC-Integrated Reject System',
     affiliation: 'University of Kelaniya Research',
     period: '2025 – Present',
