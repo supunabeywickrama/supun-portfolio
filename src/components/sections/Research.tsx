@@ -28,7 +28,7 @@ const research = [
   },
   {
     title: 'Multi-Agent AI Framework for Real-Time Flood Disaster Response Using Satellite Imagery and Geospatial Analysis',
-    affiliation: 'University of Kelaniya Research',
+    affiliation: 'ZYNAPTRIX Team Research',
     period: 'Apr 2026 – Present',
     status: 'In Progress',
     statusColor: 'purple' as const,
