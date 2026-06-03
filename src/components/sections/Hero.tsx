@@ -136,8 +136,8 @@ export function Hero() {
           scale: 1
         }} transition={{
           duration: 0.7
-        }} className="relative">
-            <div className="relative w-full aspect-square max-w-[280px] sm:max-w-sm lg:max-w-md mx-auto">
+        }} className="hidden lg:block relative">
+            <div className="relative w-full aspect-square max-w-md mx-auto">
               {/* Animated rotating rings */}
               <motion.div 
                 className="absolute inset-0 border-2 border-cyan-500/30 rounded-full"
