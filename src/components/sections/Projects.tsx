@@ -1,51 +1,96 @@
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
 import { Section } from '../ui/Section';
-import { Github, ExternalLink } from 'lucide-react';
+import { Github, ExternalLink, ChevronLeft, ChevronRight } from 'lucide-react';
 
-const projects = [
+type Project = {
+  num: string;
+  title: string;
+  subtitle: string;
+  period: string;
+  description: string;
+  features: string[];
+  tech: string[];
+  links: { github: string; demo: string };
+};
+
+const projects: Project[] = [
   {
-    shortTitle: 'Enterprise AI Ops Copilot',
-    title: 'Enterprise AI Operations Copilot — Amazon Bedrock',
+    num: '01',
+    title: 'Enterprise AI Operations Copilot',
+    subtitle: 'Individual · Amazon Bedrock / GenAI',
     period: '2025',
     description:
-      'Production-style GenAI system built end-to-end on Amazon Bedrock. An ops engineer asks "The payment API is timing out — find similar past incidents, check current metrics, and draft a Teams update." The system classifies the request, routes it through a LangGraph multi-tool agent, retrieves runbooks via RAG vector search, queries past incident tickets and service metrics, and drafts a Teams message gated behind human approval — all screened through a guardrails layer for prompt-injection detection and PII masking. Includes an automated evaluation suite (intent, tool-selection, retrieval scoring), 58-test CI/CD pipeline on GitHub Actions, and a full AWS architecture defined as Terraform IaC (S3 → EventBridge → Step Functions → Lambda/ECS → OpenSearch → Bedrock).',
-    tech: ['Python', 'FastAPI', 'Amazon Bedrock (Claude Haiku 4.5)', 'LangGraph', 'ChromaDB', 'Docker', 'Terraform', 'GitHub Actions', 'AWS'],
+      'Production-style GenAI system built end-to-end on Amazon Bedrock. An ops engineer asks one question and the system classifies intent, retrieves runbooks via RAG, queries metrics and past incidents, drafts a Teams message gated behind human approval — all screened through guardrails for prompt-injection and PII.',
+    features: [
+      'LangGraph multi-tool agent: intent routing, RAG retrieval, metric queries, Teams draft with human-in-the-loop approval',
+      'Guardrails layer: prompt-injection detection + PII masking on all inputs and outputs',
+      'Automated evaluation suite scoring intent, tool-selection, and retrieval quality — 58 tests on every CI push',
+      'Full AWS architecture as Terraform IaC: S3 → EventBridge → Step Functions → Lambda/ECS → OpenSearch → Bedrock',
+    ],
+    tech: ['Python', 'FastAPI', 'Amazon Bedrock', 'LangGraph', 'ChromaDB', 'Terraform', 'Docker', 'GitHub Actions'],
     links: { github: 'https://github.com/supunabeywickrama/enterprise-ai-ops-copilot', demo: '' },
   },
   {
-    shortTitle: 'Smart Component Identifier',
+    num: '02',
     title: 'Smart Electronic Component Identifier',
+    subtitle: 'Individual · Full-Stack Mobile AI',
     period: 'Dec 2025 – Present',
     description:
-      'Mobile-first AI system that visually analyses circuit boards and classifies 22 electronic component classes from a single capture. Trained a custom YOLOv8 detector for component localisation, then routed crops to a multimodal pipeline using GPT-4o Vision for resistor colour-band decoding and Tesseract OCR for IC part-number extraction. Improved detection robustness with ORB feature matching for multi-angle image deduplication; added on-device blur/brightness validation in the Flutter UI to reject low-quality captures.',
+      'Mobile-first AI system that visually analyses circuit boards and classifies 22 electronic component classes from a single capture. Routes cropped detections to a multimodal pipeline: GPT-4o Vision for resistor colour-band decoding and Tesseract OCR for IC part-number extraction.',
+    features: [
+      '22 electronic component classes detected and localised from a single circuit board capture',
+      'YOLOv8 detection → GPT-4o Vision for resistors → Tesseract OCR for IC part numbers',
+      'ORB feature matching for multi-angle image deduplication across successive captures',
+      'On-device blur/brightness validation in Flutter UI rejects low-quality captures before upload',
+    ],
     tech: ['Python', 'FastAPI', 'YOLOv8', 'PyTorch', 'GPT-4o Vision', 'Tesseract OCR', 'Flutter (Dart)', 'Label Studio'],
     links: { github: 'https://github.com/supunabeywickrama/circuit_detector_app', demo: '' },
   },
   {
-    shortTitle: 'MindPath – AI Wellness Platform',
+    num: '03',
     title: 'MindPath — AI Depression Support Platform',
+    subtitle: 'Individual · Full-Stack RAG Application',
     period: 'Feb 2026',
     description:
-      'AI-powered mental wellness platform with journaling, mood/habit tracking, insights dashboards, and an empathetic virtual assistant (Sela). Implemented RAG-based personalised memory using pgvector embeddings so the assistant recalls past context across sessions. Built crisis-detection safety guardrails with automatic safe-response flows, scheduled email check-ins, and OIDC/OAuth2 authentication.',
-    tech: ['React + Vite', 'TypeScript', 'TailwindCSS', 'FastAPI', 'PostgreSQL', 'pgvector', 'SQLAlchemy', 'OpenAI API', 'Docker', 'OIDC/OAuth2'],
+      'AI-powered mental wellness platform with journaling, mood/habit tracking, insights dashboards, and an empathetic AI assistant (Sela). RAG-based personalised memory using pgvector keeps context across sessions while crisis-detection guardrails provide automatic safe-response flows.',
+    features: [
+      'RAG-based personalised memory with pgvector embeddings persisted across all sessions',
+      'Crisis-detection safety guardrails with automatic safe-response escalation flows',
+      'AI assistant Sela with mood tracking, journaling, habit building, and analytics dashboards',
+      'Scheduled email check-ins and OIDC/OAuth2 authentication via Asgardeo',
+    ],
+    tech: ['React + Vite', 'TypeScript', 'FastAPI', 'PostgreSQL', 'pgvector', 'OpenAI API', 'SQLAlchemy', 'Docker'],
     links: { github: 'https://github.com/supunabeywickrama/mindpath-ai', demo: '' },
   },
   {
-    shortTitle: 'AI Customer Support (n8n)',
+    num: '04',
     title: 'AI Customer Support Automation Platform',
+    subtitle: 'Individual · Workflow-Orchestrated RAG',
     period: 'Feb 2026',
     description:
-      'End-to-end customer-support automation pipeline orchestrated in n8n that classifies intent, retrieves knowledge via RAG, and generates context-aware responses. Integrated ticket management, customer-history awareness, sentiment analysis, and a feedback loop for continuous quality improvement.',
+      'End-to-end customer-support automation pipeline orchestrated in n8n. Classifies intent, retrieves knowledge from a Qdrant vector store via RAG, and generates context-aware responses with customer-history awareness and sentiment analysis.',
+    features: [
+      'Intent classification routing queries to appropriate knowledge domains automatically',
+      'RAG retrieval from Qdrant vector store with customer-history context awareness',
+      'Sentiment analysis integrated into the pipeline for tone-aware response generation',
+      'Feedback loop for continuous quality improvement with ticket management integration',
+    ],
     tech: ['n8n', 'OpenAI API', 'Qdrant', 'PostgreSQL', 'Docker', 'JavaScript'],
     links: { github: 'https://github.com/supunabeywickrama/AI-Customer-Support-Automation-Platform-n8n', demo: '' },
   },
   {
-    shortTitle: 'Advanced Crowd Detection',
-    title: 'Advanced Crowd Detection using SAHI-Enhanced YOLOv12',
+    num: '05',
+    title: 'Advanced Crowd Detection — SAHI + YOLOv12',
+    subtitle: 'Individual · Computer Vision',
     period: '2024',
     description:
-      'High-accuracy crowd detection and counting system integrating YOLOv12 with SAHI slicing to improve small-person detection in dense scenes. Achieves better recall and robustness on high-resolution images and videos for surveillance and crowd analytics applications.',
+      'High-accuracy crowd detection and counting system combining YOLOv12 with SAHI sliced inference to dramatically improve small-person detection in high-resolution dense scenes — validated for surveillance and crowd analytics applications.',
+    features: [
+      'SAHI sliced inference for reliable small-person detection in high-density scenes',
+      'YOLOv12 backbone with improved small-object recall over standard single-pass inference',
+      'Works on high-resolution video input without memory overflow via adaptive tiling',
+      'Applicable to safety monitoring, event management, and smart city crowd analytics',
+    ],
     tech: ['Python', 'YOLOv12', 'SAHI', 'PyTorch', 'OpenCV'],
     links: {
       github: 'https://github.com/supunabeywickrama/Advanced-Crowd-Detection-using-SAHI-Enhanced-YOLOv12',
@@ -53,11 +98,18 @@ const projects = [
     },
   },
   {
-    shortTitle: 'AI-Powered Boxing Analytics',
+    num: '06',
     title: 'AI-Powered Boxing Analytics',
+    subtitle: 'Individual · Sports AI',
     period: '2024',
     description:
-      'Computer vision system for punch detection and athlete performance analysis. Integrates YOLOv8 object detection with MediaPipe pose estimation to classify punch types, measure reaction time, and generate per-round performance reports with cinematic visual overlays.',
+      'Computer vision system for real-time punch detection, classification, and athlete performance analysis. Integrates YOLOv8 object detection with MediaPipe pose estimation to produce per-round performance reports with cinematic visual overlays.',
+    features: [
+      'Punch type classification (jab, cross, hook, uppercut) via YOLOv8 detection',
+      'MediaPipe pose estimation for athlete biomechanics and reaction-time measurement',
+      'Per-round performance reports with speed, accuracy, and combo statistics',
+      'Cinematic visual overlays for training review and coach feedback sessions',
+    ],
     tech: ['Python', 'YOLOv8', 'MediaPipe', 'OpenCV', 'TensorFlow Lite'],
     links: {
       github: 'https://github.com/supunabeywickrama/Boxing-Analytics',
@@ -65,23 +117,37 @@ const projects = [
     },
   },
   {
-    shortTitle: 'Tiny Thinking Machine',
+    num: '07',
     title: 'Tiny Thinking Machine — ReAct AI Agent',
+    subtitle: 'Individual · Agentic AI',
     period: '2024',
     description:
-      'ReAct-based AI agent with tool calling and FAISS vector memory. Ingests PDF documents, builds a semantic index, and answers complex queries through a chain-of-thought loop. Exposes a Streamlit UI backed by a FastAPI service for easy local deployment.',
-    tech: ['Python', 'FastAPI', 'Streamlit', 'LangChain', 'FAISS', 'OpenAI API'],
+      'ReAct-based AI agent with tool calling and FAISS vector memory. Ingests PDF documents, builds a semantic index, and answers complex multi-hop queries through a chain-of-thought reasoning loop, served via a Streamlit UI backed by FastAPI.',
+    features: [
+      'ReAct reasoning loop with FAISS semantic search over ingested PDF knowledge bases',
+      'LangChain tool-calling architecture with visible chain-of-thought intermediate steps',
+      'Streamlit UI backed by FastAPI for zero-configuration local deployment',
+      'Handles multi-hop queries requiring document reasoning across multiple retrieved chunks',
+    ],
+    tech: ['Python', 'LangChain', 'FAISS', 'FastAPI', 'Streamlit', 'OpenAI API'],
     links: {
       github: 'https://github.com/supunabeywickrama/Tiny-Thinking-Machine',
       demo: 'https://www.linkedin.com/posts/supun-tharaka-6bb8b5278_ai-machinelearning-react-activity-7383479181239750656-Y3X_',
     },
   },
   {
-    shortTitle: 'VoCleanse – Audio Censorship AI',
+    num: '08',
     title: 'VoCleanse — AI Audio/Video Censorship',
+    subtitle: 'Individual · Audio AI',
     period: '2024',
     description:
-      'AI-driven censorship system using Faster-Whisper (Transformer ASR) and NLP-based word matching to selectively mute unwanted speech in video/audio files with millisecond accuracy. Features an interactive human-in-the-loop review step before applying changes.',
+      'AI-driven audio/video censorship system using Faster-Whisper Transformer ASR for millisecond-accurate word-level timestamping and NLP-based pattern matching to selectively mute unwanted speech, with a human-in-the-loop review step.',
+    features: [
+      'Faster-Whisper ASR for millisecond-accurate word-level timestamp extraction',
+      'Configurable NLP word-matching for profanity or custom phrase detection',
+      'Human-in-the-loop review step before any changes are applied to source media',
+      'Lossless output format preservation for both video and audio files',
+    ],
     tech: ['Python', 'Faster-Whisper', 'Transformer ASR', 'NLP', 'Audio Processing'],
     links: {
       github: 'https://github.com/supunabeywickrama/smart-mute-pro',
@@ -89,11 +155,18 @@ const projects = [
     },
   },
   {
-    shortTitle: 'License Plate Recognition',
-    title: 'AI-Based License Plate Recognition & Vehicle Analytics',
+    num: '09',
+    title: 'License Plate Recognition & Vehicle Analytics',
+    subtitle: 'Individual · Computer Vision',
     period: '2024',
     description:
-      'Real-time computer vision system for vehicle detection, license plate recognition, and traffic flow analysis. Performs privacy-preserving plate blurring, persistent plate tracking per vehicle, and virtual line-based inbound/outbound counting, with automated CSV export and visual analytics overlays.',
+      'Real-time computer vision system for vehicle detection, license plate recognition, and traffic flow analysis. Performs privacy-preserving plate blurring, persistent plate tracking per vehicle, and virtual line-based inbound/outbound counting.',
+    features: [
+      'Real-time vehicle detection with persistent license plate tracking across frames',
+      'Privacy-preserving automatic plate blurring with Tesseract OCR extraction',
+      'Virtual line-based inbound/outbound vehicle counting for traffic flow analytics',
+      'Automated CSV export of all detections with confidence scores and timestamps',
+    ],
     tech: ['Python', 'YOLOv8', 'Tesseract OCR', 'OpenCV', 'TensorFlow'],
     links: {
       github: 'https://github.com/supunabeywickrama/OCR_01',
@@ -101,48 +174,51 @@ const projects = [
     },
   },
   {
-    shortTitle: 'RehabX – Finger Runner',
+    num: '10',
     title: 'RehabX — Finger-Controlled Rehabilitation Game',
+    subtitle: 'Individual · Rehabilitation Gaming',
     period: '2024',
     description:
-      'Webcam-based rehabilitation game using real-time hand tracking to convert finger movements into gameplay. Features per-finger calibration (0%–100%), gesture smoothing, adaptive jump physics, performance logging, and gamified feedback (combo scoring, achievements).',
+      'Webcam-based rehabilitation game converting real-time finger movements detected by MediaPipe into gameplay. Features per-finger calibration, gesture smoothing, adaptive physics, and gamified performance feedback for clinical therapy use.',
+    features: [
+      'Per-finger 0%–100% calibration range for personalised movement sensitivity',
+      'Gesture smoothing algorithm to eliminate jitter in clinical precision use',
+      'Adaptive jump physics responding to finger movement speed and strength',
+      'Combo scoring and achievement system for gamified patient motivation',
+    ],
     tech: ['Python', 'MediaPipe Hands', 'OpenCV', 'Pygame', 'NumPy'],
-    links: {
-      github: 'https://github.com/supunabeywickrama/Full-Body-Estimation-using-Media-Pipe-Holistic',
-      demo: '',
-    },
+    links: { github: 'https://github.com/supunabeywickrama/Full-Body-Estimation-using-Media-Pipe-Holistic', demo: '' },
   },
   {
-    shortTitle: 'Arm Ability Tracker',
-    title: 'Arm Ability Tracker (MediaPipe Holistic)',
-    period: '2024',
-    description:
-      'Real-time computer vision system for tracking arm range of motion, finger dexterity, and 3D joint angles via webcam. Features interactive calibration (wizard/manual) for joints, live angle measurement, rehab targets, CSV logging, and video recording with overlays for clinical use.',
-    tech: ['Python', 'MediaPipe Holistic', 'OpenCV', 'NumPy'],
-    links: {
-      github: 'https://github.com/supunabeywickrama/Arm-Ability-Tracker-MediaPipe-Holistic-',
-      demo: '',
-    },
-  },
-  {
-    shortTitle: 'RoomSync – Energy Audit',
-    title: 'RoomSync — Smart IoT Energy Audit System',
+    num: '11',
+    title: 'RoomSync — Smart IoT Energy Audit',
+    subtitle: 'Academic Group · IoT + Mobile',
     period: 'Mar 2025 – Aug 2025',
     description:
-      'IoT-based real-time energy monitoring system providing live readings of voltage, current, power, energy, temperature, humidity, and light levels. Designed a custom PCB and calibrated sensor array around the ESP32, backed by a Flutter mobile app and web dashboard with Firebase cloud integration.',
+      'Smart IoT energy-audit system providing real-time monitoring of voltage, current, power, energy, temperature, humidity, and light levels. Built around a custom PCB and calibrated ESP32 sensor array with Flutter mobile app and Firebase backend.',
+    features: [
+      'Custom PCB design with calibrated multi-parameter sensor array around ESP32',
+      'Real-time monitoring: voltage, current, power, energy, temperature, humidity, light',
+      'Flutter mobile app with Firebase cloud sync and historical data visualisation',
+      'Web dashboard for institutional energy audit reporting and anomaly alerts',
+    ],
     tech: ['ESP32', 'Flutter/Dart', 'Firebase', 'C++', 'HTML/CSS/JS', 'Custom PCB'],
-    links: {
-      github: 'https://github.com/supunabeywickrama/LYCAN_ROOMSYNK',
-      demo: 'https://cjayahansa.github.io/lycanroomsynk/',
-    },
+    links: { github: 'https://github.com/supunabeywickrama/LYCAN_ROOMSYNK', demo: 'https://cjayahansa.github.io/lycanroomsynk/' },
   },
   {
-    shortTitle: '3D Facial Landmark & AR',
-    title: 'Real-Time 3D Facial Landmark Mapping & AR Expression Recognition',
+    num: '12',
+    title: '3D Facial Landmark Mapping & AR Expressions',
+    subtitle: 'Individual · Computer Vision / AR',
     period: '2024',
     description:
-      'AI-driven computer vision system that performs real-time facial landmark detection, 2D-to-3D mapping, and expression recognition. Integrates head pose estimation, blink/smile/mouth-open detection using geometric ratios, and dynamic AR overlays aligned with facial motion. Exports 3D landmarks for Blender-based visualisation and future avatar animation.',
-    tech: ['Python', 'OpenCV', 'MediaPipe', 'Computer Vision', 'AR', '3D Mapping'],
+      'Real-time AI computer vision system performing 2D-to-3D facial landmark mapping, head pose estimation, and expression recognition with dynamic AR overlays. Exports 3D landmarks for Blender visualisation and avatar animation.',
+    features: [
+      'Real-time 2D-to-3D facial landmark mapping with head pose estimation',
+      'Blink, smile, and mouth-open detection via geometric ratio thresholds',
+      'Dynamic AR overlays aligned to facial motion with sub-frame latency',
+      '3D landmark export compatible with Blender for avatar animation workflows',
+    ],
+    tech: ['Python', 'OpenCV', 'MediaPipe', 'NumPy', 'Blender'],
     links: {
       github: 'https://github.com/supunabeywickrama/Face_mesh_3D_0',
       demo: 'https://www.linkedin.com/posts/supun-tharaka-6bb8b5278_ai-computervision-faciallandmarkdetection-activity-7381924718272143360-ktR8',
@@ -151,90 +227,128 @@ const projects = [
 ];
 
 export function Projects() {
-  const [active, setActive] = useState(0);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const p = projects[activeIndex];
+
+  const prev = () => setActiveIndex((i) => (i - 1 + projects.length) % projects.length);
+  const next = () => setActiveIndex((i) => (i + 1) % projects.length);
 
   return (
-    <Section id="projects" title="Featured Projects">
-      <div className="grid lg:grid-cols-[260px_1fr] gap-4 lg:gap-6 items-start">
-        {/* Left: project tab list */}
-        <div className="flex lg:flex-col overflow-x-auto lg:overflow-x-visible gap-1 pb-2 lg:pb-0 lg:max-h-[520px] lg:overflow-y-auto scrollbar-thin">
-          {projects.map((p, i) => (
-            <button
-              key={i}
-              onClick={() => setActive(i)}
-              className={`text-left px-4 py-2.5 rounded-md text-sm font-mono transition-all shrink-0 lg:shrink border-l-2 whitespace-nowrap lg:whitespace-normal ${
-                i === active
-                  ? 'border-cyan-400 bg-cyan-400/10 text-cyan-300'
-                  : 'border-transparent text-slate-500 hover:text-slate-300 hover:bg-navy-800/60 hover:border-navy-600'
-              }`}
-            >
-              <span className="text-cyan-500/40 mr-1.5 text-xs">
-                {String(i + 1).padStart(2, '0')}.
+    <Section id="projects" title="Selected Projects">
+      <div className="grid md:grid-cols-2 gap-8 lg:gap-14 items-center">
+        {/* Left: Blueprint image frame */}
+        <div
+          key={`img-${activeIndex}`}
+          className="relative border border-navy-700 rounded-2xl overflow-hidden bg-navy-800/30 aspect-[4/3] flex items-center justify-center animate-fade-in group select-none"
+        >
+          {/* Counter badge */}
+          <div className="absolute top-4 left-4 bg-cyan-400 text-navy-900 font-mono text-[10px] px-2.5 py-1 font-bold rounded tracking-wider z-20">
+            {p.num} / {String(projects.length).padStart(2, '0')}
+          </div>
+
+          {/* Blueprint grid background */}
+          <div
+            className="absolute inset-0 opacity-[0.06]"
+            style={{
+              backgroundImage:
+                'linear-gradient(rgba(0,217,255,1) 1px, transparent 1px), linear-gradient(90deg, rgba(0,217,255,1) 1px, transparent 1px)',
+              backgroundSize: '30px 30px',
+            }}
+          />
+
+          {/* Centre content */}
+          <div className="relative z-10 flex flex-col items-center justify-center p-8 text-center">
+            <div className="w-16 h-16 rounded-2xl bg-navy-900/80 border border-navy-700 flex items-center justify-center mb-5 group-hover:border-cyan-500/40 transition-colors">
+              <span className="text-3xl font-black font-mono text-cyan-400/40 group-hover:text-cyan-400/70 transition-colors">
+                {p.num}
               </span>
-              {p.shortTitle}
-            </button>
-          ))}
+            </div>
+            <p className="text-[11px] font-mono text-slate-600 uppercase tracking-widest leading-relaxed max-w-[200px]">
+              {p.subtitle}
+            </p>
+          </div>
+
+          {/* Corner accents */}
+          <div className="absolute top-3 right-3 w-4 h-4 border-r-2 border-t-2 border-cyan-500/20" />
+          <div className="absolute bottom-3 left-3 w-4 h-4 border-l-2 border-b-2 border-cyan-500/20" />
         </div>
 
-        {/* Right: project detail panel */}
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={active}
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.22 }}
-            className="bg-navy-800/30 border border-navy-700 rounded-lg p-6 sm:p-8"
-          >
-            <div className="flex flex-wrap items-start justify-between gap-4 mb-5">
-              <div>
-                <p className="text-xs font-mono text-slate-500 mb-1">{projects[active].period}</p>
-                <h3 className="text-xl sm:text-2xl font-bold text-slate-100 leading-snug">
-                  {projects[active].title}
-                </h3>
-              </div>
-              <div className="flex gap-3 shrink-0">
-                {projects[active].links.github && (
-                  <a
-                    href={projects[active].links.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-slate-400 hover:text-cyan-400 transition-colors"
-                    aria-label="GitHub"
-                  >
-                    <Github className="h-5 w-5" />
-                  </a>
-                )}
-                {projects[active].links.demo && (
-                  <a
-                    href={projects[active].links.demo}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-slate-400 hover:text-cyan-400 transition-colors"
-                    aria-label="Live Demo / Post"
-                  >
-                    <ExternalLink className="h-5 w-5" />
-                  </a>
-                )}
-              </div>
-            </div>
+        {/* Right: Project details */}
+        <div key={`details-${activeIndex}`} className="flex flex-col justify-center animate-fade-up">
+          <span className="text-[10px] font-mono text-slate-500 tracking-widest uppercase">
+            {p.subtitle}
+          </span>
+          <h3 className="text-[1.6rem] sm:text-[2rem] font-black text-white tracking-tight mt-2 leading-tight">
+            {p.title}
+          </h3>
+          <div className="h-px bg-navy-700 my-4 w-10" />
+          <p className="text-[14px] text-slate-400 leading-relaxed mb-5">{p.description}</p>
 
-            <p className="text-slate-400 leading-relaxed mb-6 text-sm sm:text-base">
-              {projects[active].description}
-            </p>
+          <ul className="space-y-2 mb-5">
+            {p.features.map((f, i) => (
+              <li key={i} className="flex gap-2.5 text-[12.5px] text-slate-400 leading-relaxed">
+                <span className="w-1.5 h-1.5 rounded-full bg-cyan-400/50 mt-2 shrink-0" />
+                {f}
+              </li>
+            ))}
+          </ul>
 
-            <div className="flex flex-wrap gap-2">
-              {projects[active].tech.map((t) => (
-                <span
-                  key={t}
-                  className="text-xs font-mono text-cyan-400/80 bg-cyan-400/10 border border-cyan-400/10 px-2.5 py-1 rounded"
+          <div className="flex flex-wrap gap-1.5 mb-6">
+            {p.tech.map((t) => (
+              <span
+                key={t}
+                className="px-2.5 py-1 text-[10px] font-mono rounded-full border border-navy-700 bg-navy-800/50 text-slate-500 font-semibold"
+              >
+                {t}
+              </span>
+            ))}
+          </div>
+
+          <div className="flex items-center justify-between gap-4">
+            <div className="flex items-center gap-2.5">
+              {p.links.demo && (
+                <a
+                  href={p.links.demo}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-4 py-2 bg-cyan-400 text-navy-900 hover:bg-cyan-300 text-[11px] font-bold rounded-lg flex items-center gap-1.5 transition-colors uppercase tracking-wider"
                 >
-                  {t}
-                </span>
-              ))}
+                  <ExternalLink className="h-3.5 w-3.5" />
+                  View
+                </a>
+              )}
+              {p.links.github && (
+                <a
+                  href={p.links.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-9 h-9 border border-navy-700 bg-navy-800/50 hover:border-navy-600 hover:bg-navy-800 text-slate-400 hover:text-white flex items-center justify-center rounded-lg transition-colors"
+                  aria-label="GitHub"
+                >
+                  <Github className="h-4 w-4" />
+                </a>
+              )}
             </div>
-          </motion.div>
-        </AnimatePresence>
+
+            {/* Prev / Next */}
+            <div className="flex gap-2">
+              <button
+                onClick={prev}
+                className="w-9 h-9 border border-navy-700 bg-navy-800/50 hover:border-navy-600 hover:bg-navy-800 text-slate-400 hover:text-white flex items-center justify-center rounded-lg transition-colors"
+                aria-label="Previous project"
+              >
+                <ChevronLeft className="h-4 w-4" />
+              </button>
+              <button
+                onClick={next}
+                className="w-9 h-9 border border-navy-700 bg-navy-800/50 hover:border-navy-600 hover:bg-navy-800 text-slate-400 hover:text-white flex items-center justify-center rounded-lg transition-colors"
+                aria-label="Next project"
+              >
+                <ChevronRight className="h-4 w-4" />
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
     </Section>
   );
