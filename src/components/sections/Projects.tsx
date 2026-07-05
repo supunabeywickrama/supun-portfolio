@@ -30,7 +30,7 @@ const projects: Project[] = [
     ],
     tech: ['Python', 'FastAPI', 'Amazon Bedrock', 'LangGraph', 'ChromaDB', 'Terraform', 'Docker', 'GitHub Actions'],
     links: { github: 'https://github.com/supunabeywickrama/enterprise-ai-ops-copilot', demo: '' },
-    image: '/images/Enterprise AI Operations Copilot.png',
+    image: '/images/enterprise-ai-ops-copilot.png',
   },
   {
     num: '02',
@@ -47,7 +47,7 @@ const projects: Project[] = [
     ],
     tech: ['Python', 'FastAPI', 'YOLOv8', 'PyTorch', 'GPT-4o Vision', 'Tesseract OCR', 'Flutter (Dart)', 'Label Studio'],
     links: { github: 'https://github.com/supunabeywickrama/circuit_detector_app', demo: '' },
-    image: '/images/Smart Electronic Component Identifier.png',
+    image: '/images/smart-component-identifier.png',
   },
   {
     num: '03',
@@ -64,7 +64,7 @@ const projects: Project[] = [
     ],
     tech: ['React + Vite', 'TypeScript', 'FastAPI', 'PostgreSQL', 'pgvector', 'OpenAI API', 'SQLAlchemy', 'Docker'],
     links: { github: 'https://github.com/supunabeywickrama/mindpath-ai', demo: '' },
-    image: '/images/MindPath — AI Depression Support Platform.png',
+    image: '/images/mindpath.png',
   },
   {
     num: '04',
@@ -81,7 +81,7 @@ const projects: Project[] = [
     ],
     tech: ['n8n', 'OpenAI API', 'Qdrant', 'PostgreSQL', 'Docker', 'JavaScript'],
     links: { github: 'https://github.com/supunabeywickrama/AI-Customer-Support-Automation-Platform-n8n', demo: '' },
-    image: '/images/AI Customer Support Automation Platform.png',
+    image: '/images/ai-customer-support.png',
   },
   {
     num: '05',
@@ -101,7 +101,7 @@ const projects: Project[] = [
       github: 'https://github.com/supunabeywickrama/Advanced-Crowd-Detection-using-SAHI-Enhanced-YOLOv12',
       demo: 'https://www.linkedin.com/posts/supun-tharaka-6bb8b5278_computervision-yolov12-ultralytics-activity-7408493714505076736-cE83',
     },
-    image: '/images/Advanced Crowd Detection — SAHI + YOLOv12.png',
+    image: '/images/crowd-detection.png',
   },
   {
     num: '06',
@@ -121,7 +121,7 @@ const projects: Project[] = [
       github: 'https://github.com/supunabeywickrama/Boxing-Analytics',
       demo: 'https://www.linkedin.com/posts/supun-tharaka-6bb8b5278_artificialintelligence-computervision-yolov8-activity-7385019213758939136-G6Df',
     },
-    image: '/images/AI-Powered Boxing Analytics.jpg',
+    image: '/images/boxing-analytics.jpg',
   },
   {
     num: '07',
@@ -141,7 +141,7 @@ const projects: Project[] = [
       github: 'https://github.com/supunabeywickrama/Tiny-Thinking-Machine',
       demo: 'https://www.linkedin.com/posts/supun-tharaka-6bb8b5278_ai-machinelearning-react-activity-7383479181239750656-Y3X_',
     },
-    image: '/images/Tiny Thinking Machine — ReAct AI Agent.png',
+    image: '/images/tiny-thinking-machine.png',
   },
   {
     num: '08',
@@ -161,7 +161,7 @@ const projects: Project[] = [
       github: 'https://github.com/supunabeywickrama/smart-mute-pro',
       demo: 'https://www.linkedin.com/posts/supun-tharaka-6bb8b5278_ai-machinelearning-audioprocessing-activity-7391793286778126336-9dOw',
     },
-    image: '/images/VoCleanse.jpg',
+    image: '/images/vocleanse.jpg',
   },
   {
     num: '09',
@@ -181,7 +181,7 @@ const projects: Project[] = [
       github: 'https://github.com/supunabeywickrama/OCR_01',
       demo: 'https://www.linkedin.com/posts/supun-tharaka-6bb8b5278_computervision-yolov8-opencv-activity-7390282255555809281-0zuD',
     },
-    image: '/images/License Plate Recognition & Vehicle Analytics.png',
+    image: '/images/license-plate-recognition.png',
   },
   {
     num: '10',
@@ -198,7 +198,7 @@ const projects: Project[] = [
     ],
     tech: ['Python', 'MediaPipe Hands', 'OpenCV', 'Pygame', 'NumPy'],
     links: { github: 'https://github.com/supunabeywickrama/Full-Body-Estimation-using-Media-Pipe-Holistic', demo: '' },
-    image: '/images/RehabX — Finger-Controlled Rehabilitation Game.png',
+    image: '/images/rehabx.png',
   },
   {
     num: '11',
@@ -215,7 +215,7 @@ const projects: Project[] = [
     ],
     tech: ['ESP32', 'Flutter/Dart', 'Firebase', 'C++', 'HTML/CSS/JS', 'Custom PCB'],
     links: { github: 'https://github.com/supunabeywickrama/LYCAN_ROOMSYNK', demo: 'https://cjayahansa.github.io/lycanroomsynk/' },
-    image: '/images/RoomSync — Smart IoT Energy Audit.jpg',
+    image: '/images/roomsync.jpg',
   },
   {
     num: '12',
@@ -235,7 +235,7 @@ const projects: Project[] = [
       github: 'https://github.com/supunabeywickrama/Face_mesh_3D_0',
       demo: 'https://www.linkedin.com/posts/supun-tharaka-6bb8b5278_ai-computervision-faciallandmarkdetection-activity-7381924718272143360-ktR8',
     },
-    image: '/images/3D Facial Landmark Mapping & AR Expressions.png',
+    image: '/images/facial-landmark.png',
   },
 ];
 
