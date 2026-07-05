@@ -7,7 +7,7 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 imansha-next-p-main/
-images/
+
 node_modules
 dist
 dist-ssr
