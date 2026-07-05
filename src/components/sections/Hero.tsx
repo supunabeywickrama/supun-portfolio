@@ -103,7 +103,7 @@ export function Hero() {
               <Button href="#projects" icon={ArrowRight}>
                 View Projects
               </Button>
-              <Button variant="outline" icon={Download} href="https://drive.google.com/uc?export=download&id=1Snq56c5jW9EeU9l2XOeLDmXY2gQQj9LO">
+              <Button variant="outline" icon={Download} href="https://drive.google.com/uc?export=download&id=13j4lWhukpt9vxck7pSMP5M0fW8lIxbxj">
                 Download CV
               </Button>
             </motion.div>

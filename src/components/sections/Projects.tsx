@@ -11,6 +11,7 @@ type Project = {
   features: string[];
   tech: string[];
   links: { github: string; demo: string };
+  image: string;
 };
 
 const projects: Project[] = [
@@ -29,6 +30,7 @@ const projects: Project[] = [
     ],
     tech: ['Python', 'FastAPI', 'Amazon Bedrock', 'LangGraph', 'ChromaDB', 'Terraform', 'Docker', 'GitHub Actions'],
     links: { github: 'https://github.com/supunabeywickrama/enterprise-ai-ops-copilot', demo: '' },
+    image: '/images/Enterprise AI Operations Copilot.png',
   },
   {
     num: '02',
@@ -45,6 +47,7 @@ const projects: Project[] = [
     ],
     tech: ['Python', 'FastAPI', 'YOLOv8', 'PyTorch', 'GPT-4o Vision', 'Tesseract OCR', 'Flutter (Dart)', 'Label Studio'],
     links: { github: 'https://github.com/supunabeywickrama/circuit_detector_app', demo: '' },
+    image: '/images/Smart Electronic Component Identifier.png',
   },
   {
     num: '03',
@@ -61,6 +64,7 @@ const projects: Project[] = [
     ],
     tech: ['React + Vite', 'TypeScript', 'FastAPI', 'PostgreSQL', 'pgvector', 'OpenAI API', 'SQLAlchemy', 'Docker'],
     links: { github: 'https://github.com/supunabeywickrama/mindpath-ai', demo: '' },
+    image: '/images/MindPath — AI Depression Support Platform.png',
   },
   {
     num: '04',
@@ -77,6 +81,7 @@ const projects: Project[] = [
     ],
     tech: ['n8n', 'OpenAI API', 'Qdrant', 'PostgreSQL', 'Docker', 'JavaScript'],
     links: { github: 'https://github.com/supunabeywickrama/AI-Customer-Support-Automation-Platform-n8n', demo: '' },
+    image: '/images/AI Customer Support Automation Platform.png',
   },
   {
     num: '05',
@@ -96,6 +101,7 @@ const projects: Project[] = [
       github: 'https://github.com/supunabeywickrama/Advanced-Crowd-Detection-using-SAHI-Enhanced-YOLOv12',
       demo: 'https://www.linkedin.com/posts/supun-tharaka-6bb8b5278_computervision-yolov12-ultralytics-activity-7408493714505076736-cE83',
     },
+    image: '/images/Advanced Crowd Detection — SAHI + YOLOv12.png',
   },
   {
     num: '06',
@@ -115,6 +121,7 @@ const projects: Project[] = [
       github: 'https://github.com/supunabeywickrama/Boxing-Analytics',
       demo: 'https://www.linkedin.com/posts/supun-tharaka-6bb8b5278_artificialintelligence-computervision-yolov8-activity-7385019213758939136-G6Df',
     },
+    image: '/images/AI-Powered Boxing Analytics.jpg',
   },
   {
     num: '07',
@@ -134,6 +141,7 @@ const projects: Project[] = [
       github: 'https://github.com/supunabeywickrama/Tiny-Thinking-Machine',
       demo: 'https://www.linkedin.com/posts/supun-tharaka-6bb8b5278_ai-machinelearning-react-activity-7383479181239750656-Y3X_',
     },
+    image: '/images/Tiny Thinking Machine — ReAct AI Agent.png',
   },
   {
     num: '08',
@@ -153,6 +161,7 @@ const projects: Project[] = [
       github: 'https://github.com/supunabeywickrama/smart-mute-pro',
       demo: 'https://www.linkedin.com/posts/supun-tharaka-6bb8b5278_ai-machinelearning-audioprocessing-activity-7391793286778126336-9dOw',
     },
+    image: '/images/VoCleanse.jpg',
   },
   {
     num: '09',
@@ -172,6 +181,7 @@ const projects: Project[] = [
       github: 'https://github.com/supunabeywickrama/OCR_01',
       demo: 'https://www.linkedin.com/posts/supun-tharaka-6bb8b5278_computervision-yolov8-opencv-activity-7390282255555809281-0zuD',
     },
+    image: '/images/License Plate Recognition & Vehicle Analytics.png',
   },
   {
     num: '10',
@@ -188,6 +198,7 @@ const projects: Project[] = [
     ],
     tech: ['Python', 'MediaPipe Hands', 'OpenCV', 'Pygame', 'NumPy'],
     links: { github: 'https://github.com/supunabeywickrama/Full-Body-Estimation-using-Media-Pipe-Holistic', demo: '' },
+    image: '/images/RehabX — Finger-Controlled Rehabilitation Game.png',
   },
   {
     num: '11',
@@ -204,6 +215,7 @@ const projects: Project[] = [
     ],
     tech: ['ESP32', 'Flutter/Dart', 'Firebase', 'C++', 'HTML/CSS/JS', 'Custom PCB'],
     links: { github: 'https://github.com/supunabeywickrama/LYCAN_ROOMSYNK', demo: 'https://cjayahansa.github.io/lycanroomsynk/' },
+    image: '/images/RoomSync — Smart IoT Energy Audit.jpg',
   },
   {
     num: '12',
@@ -223,6 +235,7 @@ const projects: Project[] = [
       github: 'https://github.com/supunabeywickrama/Face_mesh_3D_0',
       demo: 'https://www.linkedin.com/posts/supun-tharaka-6bb8b5278_ai-computervision-faciallandmarkdetection-activity-7381924718272143360-ktR8',
     },
+    image: '/images/3D Facial Landmark Mapping & AR Expressions.png',
   },
 ];
 
@@ -246,31 +259,19 @@ export function Projects() {
             {p.num} / {String(projects.length).padStart(2, '0')}
           </div>
 
-          {/* Blueprint grid background */}
-          <div
-            className="absolute inset-0 opacity-[0.06]"
-            style={{
-              backgroundImage:
-                'linear-gradient(rgba(0,217,255,1) 1px, transparent 1px), linear-gradient(90deg, rgba(0,217,255,1) 1px, transparent 1px)',
-              backgroundSize: '30px 30px',
-            }}
+          {/* Project image — grayscale by default, colour on hover */}
+          <img
+            src={p.image}
+            alt={p.title}
+            className="absolute inset-0 w-full h-full object-cover lg:grayscale lg:group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500"
           />
 
-          {/* Centre content */}
-          <div className="relative z-10 flex flex-col items-center justify-center p-8 text-center">
-            <div className="w-16 h-16 rounded-2xl bg-navy-900/80 border border-navy-700 flex items-center justify-center mb-5 group-hover:border-cyan-500/40 transition-colors">
-              <span className="text-3xl font-black font-mono text-cyan-400/40 group-hover:text-cyan-400/70 transition-colors">
-                {p.num}
-              </span>
-            </div>
-            <p className="text-[11px] font-mono text-slate-600 uppercase tracking-widest leading-relaxed max-w-[200px]">
-              {p.subtitle}
-            </p>
-          </div>
+          {/* Subtle dark overlay so counter badge stays readable */}
+          <div className="absolute inset-0 bg-navy-900/20 group-hover:bg-transparent transition-colors duration-500" />
 
           {/* Corner accents */}
-          <div className="absolute top-3 right-3 w-4 h-4 border-r-2 border-t-2 border-cyan-500/20" />
-          <div className="absolute bottom-3 left-3 w-4 h-4 border-l-2 border-b-2 border-cyan-500/20" />
+          <div className="absolute top-3 right-3 w-4 h-4 border-r-2 border-t-2 border-cyan-500/30 z-10" />
+          <div className="absolute bottom-3 left-3 w-4 h-4 border-l-2 border-b-2 border-cyan-500/30 z-10" />
         </div>
 
         {/* Right: Project details */}
