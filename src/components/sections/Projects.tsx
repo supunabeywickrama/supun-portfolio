@@ -252,26 +252,32 @@ export function Projects() {
         {/* Left: Blueprint image frame */}
         <div
           key={`img-${activeIndex}`}
-          className="relative border border-navy-700 rounded-2xl overflow-hidden bg-navy-800/30 aspect-[4/3] flex items-center justify-center animate-fade-in group select-none"
+          className="relative border border-navy-700 rounded-2xl overflow-hidden bg-navy-900 animate-fade-in group select-none"
         >
           {/* Counter badge */}
           <div className="absolute top-4 left-4 bg-cyan-400 text-navy-900 font-mono text-[10px] px-2.5 py-1 font-bold rounded tracking-wider z-20">
             {p.num} / {String(projects.length).padStart(2, '0')}
           </div>
 
-          {/* Project image — grayscale by default, colour on hover */}
+          {/* Blurred background fill for letterbox areas */}
+          <img
+            src={p.image}
+            alt=""
+            aria-hidden
+            className="absolute inset-0 w-full h-full object-cover blur-xl scale-110 opacity-30"
+          />
+
+          {/* Full image — contain so nothing is cropped */}
           <img
             src={p.image}
             alt={p.title}
-            className="absolute inset-0 w-full h-full object-cover lg:grayscale lg:group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500"
+            className="relative z-10 w-full h-full object-contain lg:grayscale lg:group-hover:grayscale-0 transition-all duration-500 p-2"
+            style={{ maxHeight: '360px' }}
           />
 
-          {/* Subtle dark overlay so counter badge stays readable */}
-          <div className="absolute inset-0 bg-navy-900/20 group-hover:bg-transparent transition-colors duration-500" />
-
           {/* Corner accents */}
-          <div className="absolute top-3 right-3 w-4 h-4 border-r-2 border-t-2 border-cyan-500/30 z-10" />
-          <div className="absolute bottom-3 left-3 w-4 h-4 border-l-2 border-b-2 border-cyan-500/30 z-10" />
+          <div className="absolute top-3 right-3 w-4 h-4 border-r-2 border-t-2 border-cyan-500/30 z-20" />
+          <div className="absolute bottom-3 left-3 w-4 h-4 border-l-2 border-b-2 border-cyan-500/30 z-20" />
         </div>
 
         {/* Right: Project details */}
